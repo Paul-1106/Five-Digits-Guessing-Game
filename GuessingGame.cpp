@@ -4,22 +4,23 @@
 #include <cmath>
 #include <string>
 
+int globalScore = 0;
+
 // The main menu of the page.
 void menuPage() {
 	std::cout << "########################" << std::endl;
 	std::cout << "# NUMBER GUESSING GAME #" << std::endl;
 	std::cout << "########################" << std::endl;
-	std::cout << "1. Start the Game!" << std::endl;
-	std::cout << "2. Your Score" << std::endl;
-	std::cout << "3. Instructions" << std::endl;
-	std::cout << "4. Exit" << std::endl;
+	std::cout << "# 1. Start the Game    #" << std::endl;
+	std::cout << "# 2. Your Score        #" << std::endl;
+	std::cout << "# 3. Instructions      #" << std::endl;
+	std::cout << "# 4. Exit              #" << std::endl;
 	std::cout << "########################" << std::endl;
 
 }
 
 // The guessing number game function.
-void randomNumber() {
-	int score = 0;
+void randomNumber(int score) {
 
 	int guessOne;
 	int guessTwo;
@@ -102,16 +103,23 @@ void randomNumber() {
 	} while (guessOne != randNum1 || guessTwo != randNum2 || guessThree != randNum3 || guessFour != randNum4 || guessFive != randNum5);
 
 	std::cout << "You have finally guessed all five digits!" << std::endl;
-	score += 10;
-	std::cout << "Your total score: " << score << std::endl;
+	score += 20;
+	globalScore += score;
+	std::cout << "Your score is: " << score << std::endl;
+	std::cout << "Your grand total score: " << globalScore << std::endl;
+	std::cout << "########################################" << std::endl;
+	std::cout << "1. Keep on playing" << std::endl;
+	std::cout << "2. Your total score" << std::endl;
+	std::cout << "3. Instructions" << std::endl;
+	std::cout << "4. Exit" << std::endl;
+	std::cout << "########################################" << std::endl;
 
 }
 
 // Will track your score when you are finished
 void userScore() {
-	int score = 0;
 
-	std::cout << "Your current score is: " << score << " point(s)." << std::endl;
+	std::cout << "Your current score is: " << globalScore << " point(s)." << std::endl;
 }
 
 // The instructions of the page
@@ -142,7 +150,8 @@ int main() {
 		switch (option) {
 
 			case 1:
-				randomNumber();
+				randomNumber(score);
+				break;
 			case 2:
 				userScore();
 				break;
