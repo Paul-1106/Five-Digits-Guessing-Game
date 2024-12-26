@@ -40,8 +40,9 @@ void randomNumber(int score) {
 	char fourCorrection = ' ';
 	char fiveCorrection = ' ';
 
+	std::cout << "Try to guess all five digits. \nGood luck!" << std::endl;
+
 	do {
-		std::cout << "Try to guess all five digits. \nGood luck!" << std::endl;
 		std::cout << "Enter your five digits here: " << std::endl;
 		std::cin >> guessOne;
 		std::cin >> guessTwo;
@@ -89,21 +90,20 @@ void randomNumber(int score) {
 			fiveCorrection = 'O';
 		}
 
-		// Will stop from an unecessary infinite loop
-		std::cin.clear();
-		std::cin.ignore(1, '\n');
-
-
 		std::cout << "First digit guess:  " << oneCorrection << std::endl;
 		std::cout << "Second digit guess: " << twoCorrection << std::endl;
 		std::cout << "Third digit guess:  " << threeCorrection << std::endl;
 		std::cout << "Fourth digit guess: " << fourCorrection << std::endl;
 		std::cout << "Fifth digit guess:  " << fiveCorrection << std::endl;
 
+		// Will stop from an unecessary infinite loop
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 	} while (guessOne != randNum1 || guessTwo != randNum2 || guessThree != randNum3 || guessFour != randNum4 || guessFive != randNum5);
 
 	std::cout << "You have finally guessed all five digits!" << std::endl;
-	score += 20;
+	score += 15;
 	globalScore += score;
 	std::cout << "Your score is: " << score << std::endl;
 	std::cout << "Your grand total score: " << globalScore << std::endl;
@@ -133,7 +133,7 @@ void instructionPage() {
 	std::cout << "* 3 digits off = -3 points" << std::endl;
 	std::cout << "* 2 digits off = -2 points" << std::endl;
 	std::cout << "* 1 digits off = -1 points" << std::endl;
-	std::cout << "* All correct digits = +10 points" << std::endl;
+	std::cout << "* All correct digits = +15 points" << std::endl;
 }
 
 int main() {
