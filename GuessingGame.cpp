@@ -3,6 +3,7 @@
 #include <limits>
 #include <cmath>
 #include <string>
+#include <typeinfo>
 
 int globalScore = 0;
 
@@ -40,7 +41,7 @@ void randomNumber(int score) {
 	char fourCorrection = ' ';
 	char fiveCorrection = ' ';
 
-	std::cout << "Try to guess all five digits. \nGood luck!" << std::endl;
+	std::cout << "Try to guess all five digits from 1-9. \nGood luck!" << std::endl;
 
 	do {
 		std::cout << "Enter your five digits here: " << std::endl;
@@ -50,44 +51,64 @@ void randomNumber(int score) {
 		std::cin >> guessFour;
 		std::cin >> guessFive;
 
-		if (guessOne != randNum1) { // Guessing the random number wrong
+		if (guessOne == randNum1) { // Guessing the number right
+			oneCorrection = 'O'; 
+		}
+		else if (guessOne != randNum1 && guessOne >= 1 && guessOne <= 9) { // Guessing the random number wrong
 			oneCorrection = 'X';
 			score--;
 		}
-		else {
-			oneCorrection = 'O'; // Guessing the number right
+		else { // Guessing the number that is out of range
+			oneCorrection = '?';
+			score--;
 		}
-
-		if (guessTwo != randNum2) {
+		if (guessTwo == randNum2) {
+			twoCorrection = 'O';
+		}
+		else if (guessTwo != randNum2 && guessTwo >= 1 && guessTwo <= 9) {
 			twoCorrection = 'X';
 			score--;
 		}
 		else {
-			twoCorrection = 'O';
+			twoCorrection = '?';
+			score--;
 		}
 
-		if (guessThree != randNum3) {
+		if (guessThree == randNum3) {
+			threeCorrection = 'O';
+			
+		}
+		else if(guessThree != randNum3 && guessThree >= 1 && guessThree <= 9){
 			threeCorrection = 'X';
 			score--;
 		}
 		else {
-			threeCorrection = 'O';
+			threeCorrection = '?';
+			score--;
 		}
 
-		if (guessFour != randNum4) {
+		if (guessFour == randNum4) {
+			fourCorrection = 'O';
+		}
+		else if (guessFour != randNum4 && guessFour >= 1 && guessFour <= 9) {
 			fourCorrection = 'X';
 			score--;
 		}
 		else {
-			fourCorrection = 'O';
+			fourCorrection = '?';
+			score--;
 		}
 
-		if (guessFive != randNum5) {
+		if (guessFive == randNum5) {
+			fiveCorrection = 'O';
+		}
+		else if (guessFive != randNum5 && guessFive >= 1 && guessFive <= 9){
 			fiveCorrection = 'X';
 			score--;
 		}
 		else {
-			fiveCorrection = 'O';
+			fiveCorrection = '?';
+			score--;
 		}
 
 		std::cout << "First digit guess:  " << oneCorrection << std::endl;
