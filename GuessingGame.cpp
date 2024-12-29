@@ -41,7 +41,7 @@ void randomNumber(int score) {
 	char fourCorrection = ' ';
 	char fiveCorrection = ' ';
 
-	std::cout << "Try to guess all five digits from 1-9. \nGood luck!" << std::endl;
+	std::cout << "Try to guess all five digits from 1-9 (Press enter to move on to the second digit). \nGood luck!" << std::endl;
 
 	do {
 		std::cout << "Enter your five digits here: " << std::endl;
@@ -58,10 +58,17 @@ void randomNumber(int score) {
 			oneCorrection = 'X';
 			score--;
 		}
-		else { // Guessing the number that is out of range
+		else if (guessOne != randNum1 && guessOne >= 10 && guessOne <= 0) {
 			oneCorrection = '?';
 			score--;
 		}
+		else { // Prevent from outputting an unecessary infinite loop
+			oneCorrection = '?';
+			score--;
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+		}
+
 		if (guessTwo == randNum2) {
 			twoCorrection = 'O';
 		}
@@ -69,9 +76,15 @@ void randomNumber(int score) {
 			twoCorrection = 'X';
 			score--;
 		}
+		else if (guessTwo != randNum2 && guessTwo >= 10 && guessTwo <= 0){
+			twoCorrection = '?';
+			score--;
+		}
 		else {
 			twoCorrection = '?';
 			score--;
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
 		}
 
 		if (guessThree == randNum3) {
@@ -82,9 +95,15 @@ void randomNumber(int score) {
 			threeCorrection = 'X';
 			score--;
 		}
+		else if (guessThree != randNum3 && guessThree >= 10 && guessThree <= 0){
+			threeCorrection = '?';
+			score--;
+		}
 		else {
 			threeCorrection = '?';
 			score--;
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
 		}
 
 		if (guessFour == randNum4) {
@@ -94,9 +113,15 @@ void randomNumber(int score) {
 			fourCorrection = 'X';
 			score--;
 		}
+		else if (guessFour != randNum4 && guessFour >= 10 && guessFour <= 0){
+			fourCorrection = '?';
+			score--;
+		}
 		else {
 			fourCorrection = '?';
 			score--;
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
 		}
 
 		if (guessFive == randNum5) {
@@ -106,9 +131,15 @@ void randomNumber(int score) {
 			fiveCorrection = 'X';
 			score--;
 		}
+		else if (guessFive != randNum5 && guessFive >= 10 && guessFive <= 0){
+			fiveCorrection = '?';
+			score--;
+		}
 		else {
 			fiveCorrection = '?';
 			score--;
+			std::cin.clear();
+			std::cin.ignore(0, '\n');
 		}
 
 		std::cout << "First digit guess:  " << oneCorrection << std::endl;
@@ -156,6 +187,8 @@ void instructionPage() {
 	std::cout << "* 1 digits off = -1 points" << std::endl;
 	std::cout << "* All correct digits = +15 points" << std::endl;
 }
+
+
 
 int main() {
 
